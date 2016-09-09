@@ -5,4 +5,4 @@ This project simulate the App Store with Swift and without using StoryBoard
 
 # Demo
 
-![alt tag](https://github.com/jorgecasariego/App-Store/blob/master/demo/demoapp.gif)
+![alt tag](https://github.com/jorgecasariego/AppStore/blob/master/demo/demoa_pp.gif)
