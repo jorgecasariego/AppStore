@@ -2,6 +2,8 @@
 
 This project simulate the App Store with Swift and without using StoryBoard
 
+**Updated to Swift 3.0**
+
 
 # Demo
 
