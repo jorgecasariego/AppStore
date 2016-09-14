@@ -20,9 +20,9 @@ class ScreenshotsCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataS
     
     let collectionView: UICollectionView =  {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .Horizontal
+        layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = UIColor.clearColor()
+        cv.backgroundColor = UIColor.clear
         return cv
     }()
     
@@ -48,10 +48,10 @@ class ScreenshotsCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataS
         
         addConstraintsWithFormat("V:|[v0][v1(1)]|", views: collectionView, dividerView)
         
-        collectionView.registerClass(ScreenshotImageCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(ScreenshotImageCell.self, forCellWithReuseIdentifier: cellId)
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let count = app?.screenshots?.count {
             return count
         }
@@ -59,35 +59,35 @@ class ScreenshotsCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataS
         return 0
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell =  collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! ScreenshotImageCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ScreenshotImageCell
         
-        if let imageName = app?.screenshots?[indexPath.item] {
+        if let imageName = app?.screenshots?[(indexPath as NSIndexPath).item] {
             cell.imageView.image = UIImage(named: imageName)
         }
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(240, frame.height-28)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 240, height: frame.height-28)
     }
     
     // Agregamos padding a la derechea y a la izquierda
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 14, 0, 14)
     }
     
-    private class ScreenshotImageCell: BaseCell {
+    fileprivate class ScreenshotImageCell: BaseCell {
         
         let imageView: UIImageView = {
             let iv = UIImageView()
-            iv.contentMode = .ScaleAspectFill
-            iv.backgroundColor = UIColor.greenColor()
+            iv.contentMode = .scaleAspectFill
+            iv.backgroundColor = UIColor.green
             return iv
         }()
         
-        private override func setupViews() {
+        fileprivate override func setupViews() {
             super.setupViews()
             
             // Si no ponemos esto las imagenes se superponen completamente.
