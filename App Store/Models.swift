@@ -58,7 +58,7 @@ class AppCategory: NSObject {
         URLSession.shared.dataTask(with: URL(string: urlString)!, completionHandler: { (data, response, error) -> Void in
             
             if error != nil {
-                print(error)
+                print(error ?? <#default value#>)
                 return
             }
             
